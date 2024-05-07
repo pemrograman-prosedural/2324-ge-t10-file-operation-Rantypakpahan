@@ -7,7 +7,7 @@
 #include "./libs/dorm.h"
 #include "./libs/student.h"
 
-int main(int _argc, char **_argv) 
+int main(int _argc, char **_argv)  
 {
     int looping = 0;
     char command[100];

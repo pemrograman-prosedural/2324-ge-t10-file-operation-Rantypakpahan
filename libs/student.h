@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <string.h>
 struct student_t
-{
+{ 
     char id[12];
     char name[40];
     char year[5];

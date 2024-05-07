@@ -41,7 +41,7 @@ void repository(struct student_t *student, struct dorm_t *dorm, int *dormc, int 
             temp_size_dorm++;
         }
         while (!feof(student_repo))
-        {
+        { 
             char fnim[255], fnama[255], fyear[255], fgender[255];
             fscanf(student_repo, "%[^|]|%[^|]|%[^|]|%[^\n]\n", fnim, fnama, fyear, fgender);
             if (fnim != NULL && fnama != NULL && fyear != NULL && fgender != NULL)

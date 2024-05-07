@@ -24,8 +24,7 @@ int main(int _argc, char **_argv)
     drm = fopen("./storage/dorm-repository.txt", "r");  // r untuk membaca, a untuk menulis
     std = fopen("./storage/student-repository.txt", "r");
 
-    int counter = 0;
-    while(fgets(DORM, 100 , drm) != NULL && counter < 5){
+    while(fgets(DORM, 100 , drm) != NULL){
         DORM[strcspn(DORM, "\n\r")] = '\r';
         char *input = strtok(DORM, "|");
             strcpy(asrama[banyak_asrama].name, input);
@@ -41,10 +40,9 @@ int main(int _argc, char **_argv)
                 asrama[banyak_asrama].gender = 1;
             }
             banyak_asrama++;
-            counter++;
     }
-    
-    while(fgets(MAHASISWA, 100 , std) != NULL && counter < 5){
+
+    while(fgets(MAHASISWA, 100 , std) != NULL){
         MAHASISWA[strcspn(MAHASISWA, "\n\r")] = '\r';
         char *input = strtok(MAHASISWA, "|");
             strcpy(murid[banyak_murid].id, input);
@@ -62,7 +60,6 @@ int main(int _argc, char **_argv)
                 murid[banyak_murid].gender = 1;
             }
             banyak_murid++;
-            counter++;
               
     }
     fclose(drm);
@@ -91,7 +88,7 @@ int main(int _argc, char **_argv)
         }
 
         char *input = strtok(command, "#");
-        std = fopen("./storage/student-repository.txt", "a");
+
         if (strcmp(input, "student-add") == 0)
         {
             input = strtok(NULL, "#");
@@ -117,7 +114,7 @@ int main(int _argc, char **_argv)
                 fprintf(std, "%s|%s|%s|female\n", murid[banyak_murid].id, murid[banyak_murid].name, murid[banyak_murid].year);
             }
             banyak_murid++;
-            fclose(std);
+            
         }
         if (strcmp(input, "student-print-all") == 0)
         {
@@ -134,7 +131,6 @@ int main(int _argc, char **_argv)
             }
             } 
         }
-     
         if (strcmp(input, "student-print-all-detail") == 0)
         {
             for (int i = 0; i < banyak_murid; i++)
@@ -159,7 +155,6 @@ int main(int _argc, char **_argv)
                 }   
             }
         }
-        
 
         if (strcmp(input, "dorm-add") == 0)
         {

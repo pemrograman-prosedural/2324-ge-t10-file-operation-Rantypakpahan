@@ -52,7 +52,7 @@ void print_student_details(struct student_t *student, int tempallshow)
         {
             printf("male|");
         }
-        else
+        else 
         {
             printf("female|");
         }
