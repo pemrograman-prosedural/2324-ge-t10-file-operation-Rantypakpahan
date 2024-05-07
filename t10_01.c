@@ -1,7 +1,6 @@
 // 12s23008 - Ranty Insen Pakpahan
 // 12S23015 - Kevin Kristoforus Samosir
 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -46,26 +45,29 @@ int main(int _argc, char **_argv)
 
         char *input = strtok(command, "#");
 
-        if (strcmp(input, "student-print-all-detail") == 0)
+ if (strcmp(input, "student-print-all-detail") == 0)
+{
+    int counter = 0;
+    while(fgets(MAHASISWA, 100 , std) != NULL && counter < 5){
+        input = strtok(MAHASISWA, "|");
+        strcpy(murid[student_num].id, input);
+        input = strtok(NULL, "|");
+        strcpy(murid[student_num].name, input);
+        input = strtok(NULL, "|");
+        strcpy(murid[student_num].year, input);
+        input = strtok(NULL, "|");
+        if (strcmp(input, "male\n") == 0)
         {
-            while(fgets(MAHASISWA, 100 , std) != NULL){
-            input = strtok(MAHASISWA, "|");
-            strcpy(murid[student_num].id, input);
-            input = strtok(NULL, "|");
-            strcpy(murid[student_num].name, input);
-            input = strtok(NULL, "|");
-            strcpy(murid[student_num].year, input);
-            input = strtok(NULL, "|");
-            if (strcmp(input, "male\n") == 0)
-            {
-                murid[student_num].gender = 0;
-            }
-            else if (strcmp(input, "female\n") == 0)
-            {
-                murid[student_num].gender = 1;
-            }
-            student_num++;    
-            }
+            murid[student_num].gender = 0;
+        }
+        else if (strcmp(input, "female\n") == 0)
+        {
+            murid[student_num].gender = 1;
+        }
+        student_num++;
+        counter++;  
+    }
+
 
             for (int i = 0; i < student_num; i++)
             {
@@ -81,38 +83,40 @@ int main(int _argc, char **_argv)
         }
 
         
-        if (strcmp(input, "dorm-print-all-detail") == 0)
+  if (strcmp(input, "dorm-print-all-detail") == 0)
+{
+    int counter = 0;
+    while(fgets(DORM, 100 , drm) != NULL && counter < 5)
+    {
+        input = strtok(DORM, "|");
+        strcpy(asrama[banyak_dorm].name, input);
+        input = strtok(NULL, "|");
+        asrama[banyak_dorm].capacity = atoi(input);
+        input = strtok(NULL, "|");
+        if (strcmp(input, "male\n") == 0)
         {
-            while(fgets(DORM, 100 , drm) != NULL)
-            {
-                input = strtok(DORM, "|");
-                strcpy(asrama[banyak_dorm].name, input);
-                input = strtok(NULL, "|");
-                asrama[banyak_dorm].capacity = atoi(input);
-                input = strtok(NULL, "|");
-                if (strcmp(input, "male\n") == 0)
-                    {
-                        asrama[banyak_dorm].gender = 0;
-                    }   else if (strcmp(input, "female\n") == 0)
-                        {
-                            asrama[banyak_dorm].gender = 1;
-                        }
-                banyak_dorm++;
-            }
-
-            for (int i = 0; i < banyak_dorm; i++)
-            {
-                if (asrama[i].gender != 1)
-            {
-                printf("%s|%d|male|%d\n", asrama[i].name, asrama[i].capacity, asrama[i].residents_num);
-                
-            }
-            else 
-            {
-                printf("%s|%d|female|%d\n", asrama[i].name, asrama[i].capacity, asrama[i].residents_num);
-            }
-            } 
+            asrama[banyak_dorm].gender = 0;
+        }   
+        else if (strcmp(input, "female\n") == 0)
+        {
+            asrama[banyak_dorm].gender = 1;
         }
+        banyak_dorm++;
+        counter++;
+    }
+
+    for (int i = 0; i < banyak_dorm; i++)
+    {
+        if (asrama[i].gender != 1)
+        {
+            printf("%s|%d|male|%d\n", asrama[i].name, asrama[i].capacity, asrama[i].residents_num);
+        }
+        else 
+        {
+            printf("%s|%d|female|%d\n", asrama[i].name, asrama[i].capacity, asrama[i].residents_num);
+        }
+    } 
+}
         
         if (strcmp(input, "---") == 0)
         {
